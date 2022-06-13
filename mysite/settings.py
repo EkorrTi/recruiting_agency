@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     # My apps
     'accounts',
     'managing',
-
+    'django_tables2',
     #
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,4 +1,3 @@
-import imp
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
@@ -27,7 +26,7 @@ class Account_Manager(BaseUserManager):
             email = self.normalize_email(email),
             password = password,
             username = username,
-            is_employer=True,
+            is_employer=False,
             is_manager=True
         )
         user.is_admin = True
