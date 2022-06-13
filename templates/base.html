@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <h1>LE Body</h1>
+        {% for acc in accounts %}
+            <h2>{{acc}}</h2>
+        {% endfor %}
+        {% block content %}{% endblock content %}
+    </body>
+</html>
