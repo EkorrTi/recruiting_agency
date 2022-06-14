@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 {% load render_table from django_tables2 %}
+{% load bootstrap4 %}
+{% block head %}
+<title>Manager Screen</title>
+<style>
+    .table-container { padding: 10px 30px; border: solid black 1px}
+</style>
+{% endblock head %}
+{% comment %}==========================================={% endcomment %}
 {% block content %}
-    {% render_table object_list %}
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; margin: 10px 30px;">
+    {% render_table eeTable %}
+    <br>
+    {% render_table erTable %}
+</div>
 {% endblock content %}

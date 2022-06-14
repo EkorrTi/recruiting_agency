@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'accounts',
     'managing',
     'django_tables2',
+    'bootstrap4',
     #
     'django.contrib.admin',
     'django.contrib.auth',

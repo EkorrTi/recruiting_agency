@@ -27,6 +27,7 @@ class VacancyEmployee(models.Model):
     salary          = models.DecimalField(max_digits=11, decimal_places=2)
     moving          = models.BooleanField(default=True)
     driver_license  = models.BooleanField(default=True)
+    user            = models.ForeignKey(Account, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.profession + '  -  ' + str(self.salary)

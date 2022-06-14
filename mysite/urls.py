@@ -20,5 +20,6 @@ from managing.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('manager/', EmployerVacancyListView.as_view(), name='manager')
+    path('manager/', manager_screen, name='manager'),
+    path('register/', FilteredEmployerTable.as_view(), name='register')
 ]
