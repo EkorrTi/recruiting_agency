@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% block head %}
-<title>Employee screen</title>
+<title>Employer screen</title>
 {% endblock head %}
 {% comment %}========================{% endcomment %}
 {% block content %}
 <form method="post">{% csrf_token %}
     {% for field in form %}
-    <p style='display: flex; flex-direction: row; justify-content: space-between; width: 400px;'>
+    <p style='display: flex; flex-direction: row; justify-content: space-between; width: 300px;'>
         {{field.label_tag}}
         {{field}}
         {% if field.help_text %} <small>{{field.help_text}}</small> {% endif %}

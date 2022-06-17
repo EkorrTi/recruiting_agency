@@ -18,3 +18,18 @@ class MakeVacancyEmployee(forms.ModelForm):
         model = VacancyEmployee
         fields = ('profession', 'field', 'experience', 'city', 'remote_work', 'salary', 'moving', 'driver_license',)
         exclude = ('user',)
+
+class MakeVacancyEmployer(forms.ModelForm):
+    profession  = forms.CharField(max_length=100)
+    field       = forms.CharField(max_length=100)
+    experience  = forms.DecimalField(max_digits=3, decimal_places=1)
+    city        = forms.CharField(max_length=100)
+    remote_work = forms.BooleanField(initial=False, required=False)
+    salary      = forms.DecimalField(max_digits=11, decimal_places=2)
+    moving      = forms.BooleanField(initial=False, required=False, label='Is there a need to move to a different town?')
+    driver_license = forms.BooleanField(initial=False, required=False, label='Is a driver\'s license needed?')
+    company     = forms.CharField(max_length=100)
+    class Meta:
+        model = VacancyEmployee
+        fields = ('profession', 'field', 'experience', 'city', 'remote_work', 'salary', 'moving', 'driver_license','company',)
+        exclude = ('employer',)

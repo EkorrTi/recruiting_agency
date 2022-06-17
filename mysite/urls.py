@@ -23,4 +23,5 @@ urlpatterns = [
     path('manager/', manager_screen, name='manager'),
     path('register/', FilteredEmployerTable.as_view(), name='register'),
     path('employee/', postVacancyEmployee, name='employeePost'),
+    path('employer/', postVacancyEmployer, name='employerPost'),
 ]

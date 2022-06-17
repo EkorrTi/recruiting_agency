@@ -1,7 +1,7 @@
 from django_tables2 import RequestConfig, SingleTableView
 from django.shortcuts import render, redirect
 from accounts.models import Account
-from managing.forms import MakeVacancyEmployee
+from managing.forms import MakeVacancyEmployee, MakeVacancyEmployer
 from .models import *
 from .tables import *
 # Create your views here.
@@ -49,3 +49,22 @@ def postVacancyEmployee(request):
         form = MakeVacancyEmployee()
         context['form'] = form
     return render(request, 'employee.html', context)
+
+def postVacancyEmployer(request):
+    context = {}
+    user = request.user
+
+    if not user.is_employer: redirect('register')
+
+    if request.POST:
+        form = MakeVacancyEmployer(request.POST)
+        if form.is_valid():
+            vacancy = form.save(commit=False)
+            vacancy.employer = user
+            vacancy.save()
+            return redirect('manager')
+        else:
+            context['form'] = form
+    else:
+        context['form'] = MakeVacancyEmployer()
+    return render(request, 'employer.html', context)
