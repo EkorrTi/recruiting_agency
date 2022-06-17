@@ -4,14 +4,17 @@
 {% block head %}
 <title>Manager Screen</title>
 <style>
-    .table-container { padding: 10px 30px; border: solid black 1px}
+    .table-container { padding: 10px 10px;}
+    table { border-spacing: 0px; }
+    table * { text-align: center; }
+    th { padding: 4px; border: solid black 1px }
+    td { padding: 4px; border: solid black 1px }
 </style>
 {% endblock head %}
 {% comment %}==========================================={% endcomment %}
 {% block content %}
-<div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; margin: 10px 30px;">
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
     {% render_table eeTable %}
-    <br>
     {% render_table erTable %}
 </div>
 {% endblock content %}

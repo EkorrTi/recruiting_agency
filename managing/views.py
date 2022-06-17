@@ -1,6 +1,7 @@
 from django_tables2 import RequestConfig, SingleTableView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from accounts.models import Account
+from managing.forms import MakeVacancyEmployee
 from .models import *
 from .tables import *
 # Create your views here.
@@ -27,3 +28,24 @@ class FilteredEmployerTable(SingleTableMixin, FilterView):
     model = VacancyEmployer
     template_name = 'register.html'
     filtered_class = EmprVacFilter
+
+def postVacancyEmployee(request):
+    context = {}
+    user = request.user
+
+    if not user.is_authenticated:
+        return redirect('manager')
+    
+    if request.POST:
+        form = MakeVacancyEmployee(request.POST)
+        if form.is_valid():
+            vacancy = form.save(commit=False)
+            vacancy.user = user
+            vacancy.save()
+            return redirect('manager')
+        else:
+            context['form'] = form
+    else:
+        form = MakeVacancyEmployee()
+        context['form'] = form
+    return render(request, 'employee.html', context)
