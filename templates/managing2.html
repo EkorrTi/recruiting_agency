@@ -1,0 +1,5 @@
+{% load render_table from django_tables2 %}
+{% load bootstrap4 %}
+{% for table in tables %}
+    {% render_table table %}
+{% endfor %}

@@ -21,7 +21,8 @@ from managing.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('manager/', manager_screen, name='manager'),
-    path('register/', FilteredEmployerTable.as_view(), name='register'),
+    path('manager2/', FilteredManaging.as_view(), name='manager'),
+    path('register/', registration_view, name='register'),
     path('employee/', postVacancyEmployee, name='employeePost'),
     path('employer/', postVacancyEmployer, name='employerPost'),
 ]

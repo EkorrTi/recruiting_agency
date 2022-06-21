@@ -1,9 +1,12 @@
 from django_tables2 import RequestConfig, SingleTableView
 from django.shortcuts import render, redirect
+from django.views.generic.base import TemplateView
+from django_tables2.views import MultiTableMixin
 from accounts.models import Account
-from managing.forms import MakeVacancyEmployee, MakeVacancyEmployer
+from .forms import MakeVacancyEmployee, MakeVacancyEmployer
 from .models import *
 from .tables import *
+from .filters import *
 # Create your views here.
 def manager_screen(request):
     
@@ -20,14 +23,13 @@ def manager_screen(request):
 
     return render(request, 'managing.html', context)
 
-from django_filters.views import FilterView
-from django_tables2.views import SingleTableMixin
-from .filters import *
-class FilteredEmployerTable(SingleTableMixin, FilterView):
-    table_class = EmployerVacancyTable
-    model = VacancyEmployer
-    template_name = 'register.html'
-    filtered_class = EmprVacFilter
+class FilteredManaging(MultiTableMixin, TemplateView):
+    template_name = 'managing2.html'
+    tables = [
+        EmployeeVacancyTable(data=VacancyEmployee.objects.all(), prefix='Empe-'),
+        EmployerVacancyTable(data=VacancyEmployer.objects.all(), prefix='Empr-')
+    ]
+    table_pagination = {'per_page': 10}
 
 def postVacancyEmployee(request):
     context = {}
