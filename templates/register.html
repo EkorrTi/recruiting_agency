@@ -2,12 +2,12 @@
 {% block content %}
 <form method="post">{% csrf_token %}
     {% for field in registration_form %}
-    <p style='display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; width:410px;'>
+    <p>
         {{field.label_tag}}
         {{field}}
         {% if field.help_text %} <small>{{field.help_text}}</small> {% endif %}
     </p>
     {% endfor %}
-    <button type="submit">Submit</button>
+    <button type="submit">Register</button>
 </form>
 {% endblock content %}

@@ -3,3 +3,28 @@
 {% for table in tables %}
     {% render_table table %}
 {% endfor %}
+
+{% for filter in filters %}
+    <form action="" method="get" class="form form-inline">
+        {% bootstrap_form filter.form layout='inline' %}
+        {% bootstrap_button 'filter' %}
+    </form>
+{% endfor %}
+
+{% render_table employeeT %}
+{% render_table employerT %}
+
+{% if filterEmpe %}
+    <form action="" method="get" class="form form-inline">
+        {% bootstrap_form filterEmpe.form layout='inline' %}
+        {% bootstrap_button 'filterEmpe' %}
+    </form>
+    {% for obj in filterEmpe.qs %} <h4>{{obj.profession}}</h4> {% endfor %}
+{% endif %}
+
+{% if filterEmpr %}
+    <form action="" method="get" class="form form-inline">
+        {% bootstrap_form filterEmpr.form layout='inline' %}
+        {% bootstrap_button 'filterEmpr' %}
+    </form>
+{% endif %}

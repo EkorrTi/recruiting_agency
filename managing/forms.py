@@ -30,6 +30,6 @@ class MakeVacancyEmployer(forms.ModelForm):
     driver_license = forms.BooleanField(initial=False, required=False, label='Is a driver\'s license needed?')
     company     = forms.CharField(max_length=100)
     class Meta:
-        model = VacancyEmployee
+        model = VacancyEmployer
         fields = ('profession', 'field', 'experience', 'city', 'remote_work', 'salary', 'moving', 'driver_license','company',)
         exclude = ('employer',)

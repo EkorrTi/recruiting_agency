@@ -10,26 +10,21 @@ from .filters import *
 # Create your views here.
 def manager_screen(request):
     
-    eeTable = EmployeeVacancyTable( data=VacancyEmployee.objects.all(), prefix='Empe-' )
-    erTable = EmployerVacancyTable( data=VacancyEmployer.objects.all(), prefix='Empr-' )
+    eeFilter = EmpeVacFilter(request.GET, queryset=VacancyEmployee.objects.all())
+    erFilter = EmprVacFilter(request.GET, queryset=VacancyEmployer.objects.all())
+    eeTable = EmployeeVacancyTable( data=eeFilter.qs, prefix='Empe-' )
+    erTable = EmployerVacancyTable( data=erFilter.qs, prefix='Empr-' )
 
     RequestConfig(request, paginate=False).configure(eeTable)
     RequestConfig(request, paginate=False).configure(erTable)
 
     context = {
         'eeTable': eeTable,
-        'erTable': erTable
+        'erTable': erTable,
+        'filter' : erFilter
     }
 
     return render(request, 'managing.html', context)
-
-class FilteredManaging(MultiTableMixin, TemplateView):
-    template_name = 'managing2.html'
-    tables = [
-        EmployeeVacancyTable(data=VacancyEmployee.objects.all(), prefix='Empe-'),
-        EmployerVacancyTable(data=VacancyEmployer.objects.all(), prefix='Empr-')
-    ]
-    table_pagination = {'per_page': 10}
 
 def postVacancyEmployee(request):
     context = {}

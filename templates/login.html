@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
-{% load bootstrap4 %}
-{% block head %}
-<title>Employee screen</title>
-{% endblock head %}
-{% comment %}========================{% endcomment %}
 {% block content %}
 <form method="post">{% csrf_token %}
-    {% for field in form %}
+    {% for field in login_form %}
     <p>
         {{field.label_tag}}
         {{field}}
         {% if field.help_text %} <small>{{field.help_text}}</small> {% endif %}
     </p>
     {% endfor %}
-    <button type="submit">Submit</button>
+    <button type="submit">Login</button>
 </form>
 {% endblock content %}
