@@ -6,13 +6,37 @@
         {
             "label": "run django",
             "type": "shell",
-            "command": "cd C:\\Users\\balag\\Desktop\\TheStuff\\Study\\Web-tech\\lab4 & Scripts\\activate & cd mysite & start chrome 127.0.0.1:8000/manager & python manage.py runserver",
+            "command": "cd .. & Scripts\\activate & cd mysite & start chrome 127.0.0.1:8000/manager & python manage.py runserver",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "isBackground": true,
+            "runOptions": {"instanceLimit": 1}
+        },
+        {
+            "label": "venv",
+            "type": "shell",
+            "command": "cd .. & Scripts\\activate & cd mysite",
+            "problemMatcher": [],
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "isBackground": true,
+            "runOptions": {"instanceLimit": 1}
+        },
+        {
+            "label": "migrations",
+            "type": "shell",
+            "command": "cd .. & Scripts\\activate & cd mysite & python manage.py makemigrations & python manage.py migrate",
+            "problemMatcher": [],
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "isBackground": false,
             "runOptions": {"instanceLimit": 1}
         }
     ]

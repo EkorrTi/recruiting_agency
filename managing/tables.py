@@ -8,5 +8,6 @@ class EmployerVacancyTable(tables.Table):
         model = VacancyEmployer
 
 class EmployeeVacancyTable(tables.Table):
+    resume = tables.columns.FileColumn()
     class Meta:
         model = VacancyEmployee
